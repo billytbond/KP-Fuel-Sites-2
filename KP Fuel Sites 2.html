@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    
+    <!-- Link to Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        /* Ensure the map takes up space on the page */
+        #map {
+            height: 600px; /* Set map height */
+            width: 100%;   /* Set map width */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Div that will contain the map -->
+    <div id="map"></div>
+
+    <script>
+        // Initialize the map and set its view to a central point in the UK
+        var map = L.map('map').setView([54.5, -3.2], 6);  // UK center coordinates
+
+        // Add OpenStreetMap tiles to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker for London and bind a popup with a link to Google Maps
+        var marker = L.marker([51.5074, -0.1278]).addTo(map)  // London coordinates
+            .bindPopup('<b>London</b><br><a href="https://maps.google.com/?q=51.5074,-0.1278" target="_blank">Open in Google Maps</a>');
+
+        // Add additional markers here (example: Manchester)
+        var marker2 = L.marker([53.483959, -2.244644]).addTo(map)  // Manchester coordinates
+            .bindPopup('<b>Manchester</b><br><a href="https://maps.google.com/?q=53.483959,-2.244644" target="_blank">Open in Google Maps</a>');
+    </script>
+
+</body>
+</html>
